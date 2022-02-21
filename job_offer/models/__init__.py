@@ -1,0 +1,1 @@
+from . import  hr_offer, hr_applicant, hr_job

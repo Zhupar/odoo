@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_hr_offer_form">
+        <field name="name">hr.offer.form</field>
+        <field name="model">hr.offer</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button id="button_send_employee" name="action_send_employee" string="Send To Employee" type="object"
+                            class="btn-primary" states="progress"/>
+                    <button id="button_signed" name="action_signed" string="Signed" type="object" class="btn-primary"
+                            states="employee"/>
+
+                    <field name="state" widget="statusbar" statusbar_visible="new,progress,employee,signed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="reference" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="applicant_id" />
+                            <field name="position_id" />
+                            <field name="city" />
+                            <field name="company" />
+                            <field name="manager" />
+                            <field name="responsibilities_id" widget="many2many_tags"/>
+                            <field name="salary"/>
+                            <field name="premium" />
+                            <field name="employment"/>
+                            <field name="paid_holiday"/>
+                            <field name="number_of_days"  attrs="{'invisible': [('paid_holiday', '=', False)]}"/>
+                        </group>
+                        <group>
+                            <field name="job_type"/>
+                            <field name="trial_period"/>
+                            <field name="offer_date"/>
+                            <field name="expiry_date"/>
+                            <field name="prepared_by"/>
+                            <field name="insurance"/>
+                            <field name="schedule_start"/>
+                            <field name="schedule_end"/>
+                            <field name="add_paid_holiday"/>
+                            <field name="add_number_of_days"  attrs="{'invisible': [('add_paid_holiday', '=', False)]}"/>
+                        </group>
+                    </group>
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_hr_offer_tree">
+        <field name="name">hr.offer.tree</field>
+        <field name="model">hr.offer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference" readonly="1"/>
+                <field name="applicant_id"/>
+                <field name="position_id"/>
+                <field name="schedule_start"/>
+                <field name="schedule_end"/>
+                <field name="city"/>
+                <field name="company"/>
+                <field name="manager"/>
+                <field name="salary"/>
+                <field name="premium"/>
+                <field name="employment"/>
+                <field name="job_type"/>
+                <field name="trial_period"/>
+                <field name="offer_date"/>
+                <field name="expiry_date"/>
+                <field name="prepared_by"/>
+                <field name="insurance"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hr_offer_kanban" model="ir.ui.view">
+        <field name="name">hr.offer.kanban</field>
+        <field name="model">hr.offer</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="applicant_id" />
+                <field name="position_id"/>
+                <field name="company"/>
+                <field name="city"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="on_kanban_global_click">
+                            <div class="on_kanban_details">
+                                <ul>
+                                    <li>
+                                        Applicant: <field name="applicant_id"/>
+                                    </li>
+                                    <li>
+                                        Position: <field name="position_id"/>
+                                    </li>
+                                    <li>
+                                        Company: <field name="company"/>
+                                    </li>
+                                    <li>
+                                        City: <field name="city"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <record id="offer_action" model="ir.actions.act_window">
+        <field name="name">Job Offer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.offer</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                create first offer
+            </p>
+        </field>
+    </record>
+
+
+
+</odoo>

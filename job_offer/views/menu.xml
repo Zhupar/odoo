@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="job_offer_root"
+              name="Recruitment"
+              sequence="1"/>
+
+    <menuitem id="job_offer_applicant_root"
+              name="Applications"
+              parent="job_offer_root"
+              sequence="1"/>
+
+    <menuitem id="by_job_positions"
+              name="By Job Positions"
+              parent="job_offer_applicant_root"
+              action="job_action"
+              sequence="1"/>
+
+    <menuitem id="all_applications"
+              name="All Applications"
+              parent="job_offer_applicant_root"
+              action="applicant_action"
+              sequence="2"/>
+
+    <menuitem id="job_offers"
+              name="Job Offers"
+              parent="job_offer_applicant_root"
+              action="offer_action"
+              sequence="3"/>
+
+    <menuitem id="reporting_root"
+              name="Reporting"
+              parent="job_offer_root"
+              sequence="2"/>
+
+    <menuitem id="configuration_root"
+              name="Configuration"
+              parent="job_offer_root"
+              sequence="3"/>
+
+    <menuitem id="job_responsibilities"
+              name="Responsibilities"
+              parent="configuration_root"
+              action="responsibilities_action"
+              sequence="1"/>
+
+</odoo>

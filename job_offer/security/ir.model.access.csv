@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_hr_applicant","access.hr.applicant","model_hr_applicant","",1,1,1,1
+"access_hr_job","access.hr.job","model_hr_job","",1,1,1,1
+"access_hr_job_responsibility","access_hr_job_responsibility","model_hr_job_responsibility","",1,1,1,1
+"access_hr_offer","access_hr_offer","model_hr_offer","",1,1,1,1

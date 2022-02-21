@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="hr_job_forms">
+        <field name="name">hr.job.form</field>
+        <field name="model">hr.job</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="address"/>
+                            <field name="name_of_company"/>
+                            <field name="position_manager"/>
+                            <field name="employment"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+
+                        </group>
+                        <group>
+                            <field name="job_type"/>
+                            <field name="job_responsibilities_ids" widget="many2many_tags"/>
+                            <field name="insurance"/>
+                            <field name="paid_holiday"/>
+                            <field name="add_paid_holiday"/>
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_hr_job_tree">
+        <field name="name">hr.job.tree</field>
+        <field name="model">hr.job</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="address"/>
+                <field name="name_of_company"/>
+                <field name="position_manager"/>
+                <field name="employment"/>
+                <field name="job_type"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hr_job_kanban" model="ir.ui.view">
+        <field name="name">hr.job.kanban</field>
+        <field name="model">hr.job</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name" />
+                <field name="address"/>
+                <field name="name_of_company"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="on_kanban_global_click">
+                            <div class="on_kanban_details">
+                                <ul>
+                                    <li>
+                                        Position: <field name="name"/>
+                                    </li>
+                                    <li>
+                                        Address: <field name="address"/>
+                                    </li>
+                                    <li>
+                                        Company: <field name="name_of_company"/>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="job_action" model="ir.actions.act_window">
+        <field name="name">Job positions</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.job</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                create new position
+            </p>
+        </field>
+    </record>
+
+
+
+</odoo>

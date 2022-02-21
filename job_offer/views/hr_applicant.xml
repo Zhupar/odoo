@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_hr_applicant_forms">
+        <field name="name">hr.applicant.form</field>
+        <field name="model">hr.applicant</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button id="button_create_offer" name="action_create_offer" string="Create Job Offer Request" type="object"
+                            class="btn-primary" />
+
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="email"/>
+                        </group>
+                        <group>
+                            <field name="mobile_phone"/>
+                            <field name="degree"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Applicant contracts" name="applicant_contracts">
+                            <field name="related_offer_id">
+                                <tree>
+                                    <field name="reference" readonly="1"/>
+                                    <field name="position_id"/>
+                                    <field name="city"/>
+                                    <field name="company"/>
+                                    <field name="manager"/>
+                                    <field name="salary"/>
+                                    <field name="premium"/>
+                                    <field name="employment"/>
+                                    <field name="job_type"/>
+                                    <field name="trial_period"/>
+                                    <field name="offer_date"/>
+                                    <field name="expiry_date"/>
+                                    <field name="prepared_by"/>
+                                    <field name="insurance"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_hr_applicant_tree">
+        <field name="name">hr.applicant.tree</field>
+        <field name="model">hr.applicant</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="email"/>
+                <field name="mobile_phone"/>
+                <field name="degree"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hr_applicant_kanban" model="ir.ui.view">
+        <field name="name">hr.applicant.kanban</field>
+        <field name="model">hr.applicant</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name" />
+                <field name="email"/>
+                <field name="mobile_phone"/>
+                <field name="degree"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="on_kanban_global_click">
+                            <div class="on_kanban_details">
+                                <ul>
+                                    <li>
+                                        Name: <field name="name"/>
+                                    </li>
+                                    <li>
+                                        Email: <field name="email"/>
+                                    </li>
+                                    <li>
+                                        Mobile Phone: <field name="mobile_phone"/>
+                                    </li>
+                                    <li>
+                                        Degree: <field name="degree"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="applicant_action" model="ir.actions.act_window">
+        <field name="name">Applicant</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.applicant</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                create your profile
+            </p>
+        </field>
+    </record>
+
+
+
+</odoo>
